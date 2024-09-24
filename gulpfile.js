@@ -1,18 +1,29 @@
-const gulp = require('gulp');
-const sass = require('gulp-sass')(require('sass')); // Подключаем gulp-sass и указываем компилятор
+import gulp from 'gulp';
+import { deleteSync } from 'del'
 
-// Задача для компиляции SCSS в CSS
-gulp.task('sass', function() {
-    return gulp.src('src/styles/**/*.scss') // Путь к вашим SCSS файлам
-        .pipe(sass().on('error', sass.logError)) // Компилируем и обрабатываем ошибки
-        .pipe(gulp.dest('dist/css')); // Путь для сохранения скомпилированных CSS файлов
-});
+const {src,dest,series, parallel} = gulp;
 
-gulp.task('watch', function() {
-    gulp.watch('src/scss/**/*.scss', gulp.series('sass')); // Следим за изменениями в SCSS файлах
-});
+export async function clean() {
+  return deleteSync('./build/', { force: true })
+}
 
+export function copyFonts() {
+  return src('src/fonts/**/*.ttf')
+    .pipe(gulp.dest('build/fonts'))
+}
 
+export function copyImages() {
+  return gulp.src('src/images/**/*.{png,jpg}')
+    .pipe(gulp.dest('build/images'))
+}
 
-// Задача по умолчанию
-gulp.task('default', gulp.series('dev'));
+export function copyHtml() {
+  return gulp.src('src/**/*.html')
+    .pipe(gulp.dest('build'))
+}
+
+export function build(done) {
+  gulp.series(copyFonts, copyImages)(done);
+}
+
+export default gulp.series(clean, copyFonts, copyImages, copyHtml);
