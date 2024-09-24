@@ -1,8 +1,3 @@
-import gulp from 'gulp';
-import { deleteSync } from 'del'
-
-const {src,dest,series, parallel} = gulp;
-
 export async function clean() {
   return deleteSync('./build/', { force: true })
 }
