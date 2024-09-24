@@ -1,0 +1,21 @@
+{
+  "name": "Starter",
+  "version": "1.0.0",
+  "description": "Данная сборка на Gulp v.5.0.0 предназначена для компании ААА для написания проектов по верстке",
+  "main": "index.js",
+  "scripts": {
+    "dev": "gulp",
+    "build": "gulp build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gulp"
+  ],
+  "author": "Изосимов Андрей Андреевич, Кривой Алексей Александрович, Мамутов Гирей Ренатович",
+  "license": "CC BY-NC-ND 4.0",
+  "dependencies": {
+    "gulp": "^5.0.0",
+    "gulp-sass": "^5.1.0",
+    "sass": "^1.79.3"
+  }
+}
