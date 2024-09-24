@@ -1,24 +1,16 @@
-export async function clean() {
-  return deleteSync('./build/', { force: true })
-}
+import { gulpConfig } from "./modules/config.js";
+import { getAllImages, optimizeImages } from "./modules/copy-statics.js";
 
-export function copyFonts() {
-  return src('src/fonts/**/*.ttf')
-    .pipe(gulp.dest('build/fonts'))
-}
+const { gulp, tasks } = gulpConfig;
+const { clean, copyStatics } = tasks;
+const { series, paralel } = gulp;
 
-export function copyImages() {
-  return gulp.src('src/images/**/*.{png,jpg}')
-    .pipe(gulp.dest('build/images'))
-}
-
-export function copyHtml() {
-  return gulp.src('src/**/*.html')
-    .pipe(gulp.dest('build'))
+export async function test() {
+  await series(optimizeImages);
 }
 
 export function build(done) {
-  gulp.series(copyFonts, copyImages)(done);
+  series(clean, copyStatics)(done);
 }
 
-export default gulp.series(clean, copyFonts, copyImages, copyHtml);
+export default series(clean);
