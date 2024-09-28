@@ -1,17 +1,40 @@
 import { imports } from "../imports.js"
 import { paths } from "../paths.js"
+import gulp from 'gulp';
+import uglify from 'gulp-uglify';
+import rename from 'gulp-rename';
+import browserify from 'browserify';
+import source from 'vinyl-source-stream';
+import notify from 'gulp-notify';
+import buffer from 'vinyl-buffer';
 
-const { gulp, server, uglify, babel, concat } = imports;
+const { server } = imports;
 
-const { dist, source } = paths;
-
-export function initScript() {
-    return gulp.src(`./${source}/scripts/**/*.js`)
-    .pipe(babel({
-        presets: ['@babel/preset-env']
-    }))
-    .pipe(concat('main.min.js'))
-    .pipe(uglify.default())
-    .pipe(gulp.dest(`./${dist}/scripts/`))
-    .pipe(server.stream())
+async function initScripts() {
+  return (
+    browserify({
+      entries: `./src/scripts/main.js`,
+    })
+      .transform('babelify', {
+        presets: ['@babel/preset-env'],
+        sourceMaps: true,
+        global: true
+      })
+      .bundle()
+      .on(
+        'error',
+        notify.onError({
+          title: 'JS compiling error',
+          wait: true,
+        })
+      )
+      .pipe(source('main.js'))
+      .pipe(buffer())
+      .pipe(uglify())
+      .pipe(rename('main.min.js'))
+      .pipe(gulp.dest(`./dist/scripts`))
+      .pipe(server.stream())
+  );
 }
+
+export default initScripts;

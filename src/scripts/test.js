@@ -1,4 +1,4 @@
 
 export function init() {
-    alert('test');
+  alert(2);
 }

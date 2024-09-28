@@ -1,7 +1,2 @@
-import init from './test.js'
-
+import { init } from './test.js'
 init();
-
-alert('sev')
-
-console.log('sobaka');
