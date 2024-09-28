@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "description": "Данная сборка на Gulp v.5.0.0 предназначена для компании ААА для написания проектов по верстке",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "dev": "gulp",
+    "dev": "gulp startDev",
+    "optimize:raster": "gulp optimizeRaster",
+    "optimize:vector": "gulp optimizeVector",
+    "optimize:all": "gulp optimizeAllImages",
+    "convert:fonts": "gulp convertFonts",
     "build": "gulp build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,8 +19,29 @@
   "author": "Изосимов Андрей Андреевич, Кривой Алексей Александрович, Мамутов Гирей Ренатович",
   "license": "CC BY-NC-ND 4.0",
   "dependencies": {
-    "gulp": "^5.0.0",
+    "gulp-cli": "^3.0.0",
     "gulp-sass": "^5.1.0",
     "sass": "^1.79.3"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.25.4",
+    "babelify": "^10.0.0",
+    "browser-sync": "^3.0.3",
+    "browserify": "^17.0.0",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-file-include": "^2.3.0",
+    "gulp-notify": "^5.0.0",
+    "gulp-refresh": "^1.1.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sharp-responsive": "^0.4.1",
+    "gulp-svgmin": "^4.1.0",
+    "gulp-ttf2woff": "^2.0.0",
+    "gulp-ttf2woff2": "^5.0.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-uglify-es": "^3.0.0",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
   }
 }

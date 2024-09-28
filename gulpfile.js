@@ -1,29 +1,53 @@
-import gulp from 'gulp';
-import { deleteSync } from 'del'
+import { imports } from './modules/imports.js';
+import { tasks } from './modules/tasks.js';
+import { paths } from './modules/paths.js';
 
-const {src,dest,series, parallel} = gulp;
+const { gulp, server } = imports;
+const { series, parallel } = gulp;
 
-export async function clean() {
-  return deleteSync('./build/', { force: true })
+const {
+  removeBuild,
+  includeIndexPage,
+  includeOtherPages,
+  sass,
+  copyImages,
+  copyFonts,
+  initScript,
+  refreshPage,
+} = tasks
+
+function reloadServer (done) {
+  server.reload();
+  done();
+} 
+
+export function startServer() { 
+  server.init({
+      server: {
+          baseDir: `./${paths.dist}`
+      },
+      cors: true,
+      ui:false,
+  })
+
+  gulp.watch(`./${paths.source}/index.html`, gulp.series(includeIndexPage));
+  gulp.watch(`./${paths.source}/pages/**/*.html`, gulp.series(includeOtherPages));
+  gulp.watch(`./${paths.source}/scss/**/*.scss`, gulp.series(sass));
+  gulp.watch(`./${paths.source}/scripts/**/*.js`, gulp.series(initScript));
 }
 
-export function copyFonts() {
-  return src('src/fonts/**/*.ttf')
-    .pipe(gulp.dest('build/fonts'))
+export function startDev(done) {
+  series(
+    removeBuild,
+    parallel(
+      includeIndexPage,
+      includeOtherPages,
+      sass,
+      copyImages,
+      copyFonts,
+      initScript,
+    ),
+    startServer
+  )
+    (done)
 }
-
-export function copyImages() {
-  return gulp.src('src/images/**/*.{png,jpg}')
-    .pipe(gulp.dest('build/images'))
-}
-
-export function copyHtml() {
-  return gulp.src('src/**/*.html')
-    .pipe(gulp.dest('build'))
-}
-
-export function build(done) {
-  gulp.series(copyFonts, copyImages)(done);
-}
-
-export default gulp.series(clean, copyFonts, copyImages, copyHtml);
