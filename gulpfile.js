@@ -1,16 +1,18 @@
-import { gulpConfig } from "./modules/config.js";
-import { getAllImages, optimizeImages } from "./modules/copy-statics.js";
+import { imports } from './modules/imports.js';
+import { tasks } from './modules/tasks.js';
 
-const { gulp, tasks } = gulpConfig;
-const { clean, copyStatics } = tasks;
-const { series, paralel } = gulp;
 
-export async function test() {
-  await series(optimizeImages);
+const { gulp } = imports;
+const { series, parallel } = gulp;
+
+export function startDev() {
+  series(
+    tasks.removeBuild,
+    parallel(
+      tasks.includeFiles,
+      tasks.sass,
+      tasks.script,
+    ),
+    tasks.startServer
+  )();
 }
-
-export function build(done) {
-  series(clean, copyStatics)(done);
-}
-
-export default series(clean);
