@@ -3,11 +3,15 @@ import { rmSync } from 'node:fs';
 import gulp from 'gulp';
 import fileinclude from 'gulp-file-include';
 import gulpSass from 'gulp-sass';
-import sharp from 'gulp-sharp-responsive';
 import * as dartSass from 'sass';
+import sharp from 'gulp-sharp-responsive';
+import svgo from 'gulp-svgmin'
+import ttf2woff from 'gulp-ttf2woff';
+import ttf2woff2 from 'gulp-ttf2woff2';
 import babel from 'gulp-babel';
 import concat from 'gulp-concat';
-import browserSync from 'browser-sync';
+import uglify from 'gulp-uglify-es';
+import server from 'browser-sync';
 
 export const imports = {
   gulp: gulp,
@@ -15,8 +19,13 @@ export const imports = {
   dartSass: dartSass,
   gulpSass: gulpSass,
   sharp: sharp,
+  svgo: svgo,
+  ttf2woff: ttf2woff,
+  ttf2woff2: ttf2woff2,
   babel: babel,
   concat: concat,
-  browserSync: browserSync,
+  uglify: uglify,
+  server: server,
   rmSync: rmSync,
+
 }

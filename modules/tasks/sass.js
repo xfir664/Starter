@@ -1,7 +1,7 @@
 import { imports } from "../imports.js";
 import { paths } from "../paths.js";
 
-const { dartSass , gulpSass, gulp, browserSync } = imports;
+const { dartSass , gulpSass, gulp, server } = imports;
 const { dist, source } = paths;
 
 const sassCompiler = gulpSass(dartSass, {
@@ -9,20 +9,9 @@ const sassCompiler = gulpSass(dartSass, {
     outputStyle: 'compressed'
 });
 
-async function addSass () {
-    function initSass () {
-        return gulp.src(`./${source}/styles/styles.scss`)
-        .pipe(sassCompiler())
-        .pipe(gulp.dest(`./${dist}/styles/`))
-    }
-
-    function watchSass() {
-        gulp.watch(`./${source}/styles/**/*.scss`, initSass);
-        gulp.watch(`./${dist}/styles`).on('change', browserSync.reload);
-    }
-
-    initSass();
-    watchSass();
+export function sass () {
+    return gulp.src(`./${source}/scss/styles.scss`)
+    .pipe(sassCompiler())
+    .pipe(gulp.dest(`./${dist}/styles/`))
+    .pipe(server.stream())
 }
-
-export default gulp.task('sass', addSass);
