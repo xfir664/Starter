@@ -12,6 +12,7 @@ import babel from 'gulp-babel';
 import concat from 'gulp-concat';
 import uglify from 'gulp-uglify-es';
 import server from 'browser-sync';
+import refresh from 'gulp-refresh'
 
 export const imports = {
   gulp: gulp,
@@ -26,6 +27,6 @@ export const imports = {
   concat: concat,
   uglify: uglify,
   server: server,
+  refresh: refresh,
   rmSync: rmSync,
-
 }

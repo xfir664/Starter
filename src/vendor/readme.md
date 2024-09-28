@@ -1,1 +1,1 @@
-tyt
+# Папка vendor для vendor

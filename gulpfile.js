@@ -11,7 +11,9 @@ const {
   includeOtherPages,
   sass,
   copyImages,
+  copyFonts,
   initScript,
+  refreshPage,
 } = tasks
 
 function reloadServer (done) {
@@ -42,6 +44,7 @@ export function startDev(done) {
       includeOtherPages,
       sass,
       copyImages,
+      copyFonts,
       initScript,
     ),
     startServer

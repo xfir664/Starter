@@ -13,7 +13,7 @@ const { server } = imports;
 async function initScripts() {
   return (
     browserify({
-      entries: `./src/scripts/main.js`,
+      entries: `./${paths.source}/scripts/main.js`,
     })
       .transform('babelify', {
         presets: ['@babel/preset-env'],
@@ -32,7 +32,7 @@ async function initScripts() {
       .pipe(buffer())
       .pipe(uglify())
       .pipe(rename('main.min.js'))
-      .pipe(gulp.dest(`./dist/scripts`))
+      .pipe(gulp.dest(`./${paths.dist}/scripts`))
       .pipe(server.stream())
   );
 }

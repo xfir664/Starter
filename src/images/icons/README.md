@@ -1,0 +1,1 @@
+# Папка images/icons для иконок формирования stack.svg

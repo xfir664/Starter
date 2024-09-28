@@ -1,1 +1,1 @@
-tyt
+# Папка raw/icons для создания stack.svg

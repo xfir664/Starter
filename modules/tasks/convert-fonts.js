@@ -5,10 +5,10 @@ const { gulp, ttf2woff, ttf2woff2 } = imports;
 const { raw, source } = paths
 
 function convertFonst () {
-    return gulp.src(`./${raw}/fonts/*.ttf`)
+    return gulp.src(`./${raw}/fonts/**/*.ttf`)
     .pipe(ttf2woff())
     .pipe(gulp.dest(`./${source}/fonts`))
-    .pipe(gulp.src(`./${raw}/fonts/*.ttf`))
+    .pipe(gulp.src(`./${raw}/fonts/**/*.ttf`))
     .pipe(ttf2woff2())
     .pipe(gulp.dest(`./${source}/fonts`))
 }
