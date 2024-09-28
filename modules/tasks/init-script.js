@@ -10,7 +10,7 @@ import buffer from 'vinyl-buffer';
 
 const { server } = imports;
 
-async function initScripts() {
+function initScripts() {
   return (
     browserify({
       entries: `./${paths.source}/scripts/main.js`,
