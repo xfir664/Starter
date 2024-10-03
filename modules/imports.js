@@ -13,6 +13,7 @@ import concat from 'gulp-concat';
 import uglify from 'gulp-uglify-es';
 import server from 'browser-sync';
 import refresh from 'gulp-refresh'
+import rename from 'gulp-rename';
 
 export const imports = {
   gulp: gulp,
@@ -29,4 +30,5 @@ export const imports = {
   server: server,
   refresh: refresh,
   rmSync: rmSync,
+  rename: rename,
 }

@@ -6,6 +6,7 @@ import { copyImages } from './tasks/copy-images.js';
 import initScript from './tasks/init-script.js';
 import './tasks/optimize-images.js';
 import './tasks/convert-fonts.js'
+import { createVendors } from './tasks/create-vendor.js'
 
 export const tasks = {
   removeBuild: removeBuild,
@@ -15,4 +16,5 @@ export const tasks = {
   copyImages: copyImages,
   copyFonts: copyFonts,
   initScript: initScript,
+  createVendors: createVendors,
 }

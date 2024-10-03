@@ -13,6 +13,7 @@ export function includeOtherPages() {
     return gulp.src(`./${source}/pages/*.html`)
     .pipe(fileInclude(fileIncludeSetting))
     .pipe(gulp.dest(`./${dist}/pages/`))
+    .pipe(server.stream())
 }
 
 export function includeIndexPage() {

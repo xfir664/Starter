@@ -10,7 +10,7 @@ import buffer from 'vinyl-buffer';
 
 const { server } = imports;
 
-async function initScripts() {
+function initScripts() {
   return (
     browserify({
       entries: `./${paths.source}/scripts/main.js`,
@@ -21,13 +21,6 @@ async function initScripts() {
         global: true
       })
       .bundle()
-      .on(
-        'error',
-        notify.onError({
-          title: 'JS compiling error',
-          wait: true,
-        })
-      )
       .pipe(source('main.js'))
       .pipe(buffer())
       .pipe(uglify())
