@@ -1,0 +1,14 @@
+// Тут миксины
+
+// Подключение локального шрифта
+@mixin font-face($font-family, $font-weight, $font-style, $font) {
+    @font-face {
+        font-family: '#{$font-family}';
+        font-weight: $font-weight;
+        font-style: $font-style;
+        src: 
+            url('../fonts/#{$font}.woff') format(woff),
+            url('../fonts/#{$font}.woff2') format(woff2);
+        font-display: swap;
+    }
+}

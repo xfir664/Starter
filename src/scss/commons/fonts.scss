@@ -1,0 +1,5 @@
+$font-primary: 'Ubuntu', 'Arial', 'sans-serif'; 
+
+@include font-face(Ubuntu, 400, normal, Ubuntu-Regular);
+@include font-face(Ubuntu, 500, normal, Ubuntu-Medium);
+@include font-face(Ubuntu, 700, normal, Ubuntu-Bold);

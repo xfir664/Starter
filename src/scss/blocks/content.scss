@@ -1,0 +1,16 @@
+.content {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (min-width:$desktop) {
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(12, minmax(60px, 70px));
+        column-gap: 30px;
+
+        &__container {
+            grid-column: 4/ -1;
+        }
+    }
+}

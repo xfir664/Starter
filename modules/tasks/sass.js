@@ -1,10 +1,18 @@
 import { imports } from "../imports.js";
 import { paths } from "../paths.js";
-import autoPrefixer from "gulp-autoprefixer";
-import cleanCSS from 'gulp-clean-css';
-import sourcemaps from 'gulp-sourcemaps';
 
-const { dartSass , gulpSass, gulp, server } = imports;
+const { 
+    dartSass,
+    gulpSass,
+    gulp,
+    server,
+    autoPrefixer,
+    cleanCSS,
+    sourcemaps,
+    sassGlob,
+
+} = imports;
+
 const { dist, source } = paths;
 
 const sassCompiler = gulpSass(dartSass, {
@@ -15,6 +23,7 @@ const sassCompiler = gulpSass(dartSass, {
 export function sass () {
     return gulp.src(`./${source}/scss/styles.scss`)
     .pipe(sourcemaps.init())
+    .pipe(sassGlob())
     .pipe(sassCompiler())
     .pipe(autoPrefixer())
     .pipe(cleanCSS())

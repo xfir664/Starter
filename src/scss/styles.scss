@@ -1,1 +1,6 @@
-@import "commons/global.scss";
+@import 'commons/variables.scss';
+@import 'commons/mixins.scss';
+@import 'commons/resets.scss';
+@import 'commons/fonts.scss';
+@import 'commons/global.scss';
+@import 'blocks/**/*.scss';

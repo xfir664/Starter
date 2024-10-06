@@ -1,33 +1,20 @@
-import { imports } from "../imports.js"
-import { paths } from "../paths.js"
-import gulp from 'gulp';
-import uglify from 'gulp-uglify';
-import rename from 'gulp-rename';
-import browserify from 'browserify';
-import source from 'vinyl-source-stream';
-import notify from 'gulp-notify';
-import buffer from 'vinyl-buffer';
+import { imports } from "../imports.js";
+import { paths } from "../paths.js";
+import webpackStream from 'webpack-stream';
+import webpack from 'webpack';
+import { webpackConfig } from '../../webpack.config.js';
+import generateDynamicLoader from '../../generateFilesList.js'
 
-const { server } = imports;
+const { server, gulp } = imports;
 
 function initScripts() {
-  return (
-    browserify({
-      entries: `./${paths.source}/scripts/main.js`,
-    })
-      .transform('babelify', {
-        presets: ['@babel/preset-env'],
-        sourceMaps: true,
-        global: true
-      })
-      .bundle()
-      .pipe(source('main.js'))
-      .pipe(buffer())
-      .pipe(uglify())
-      .pipe(rename('main.min.js'))
-      .pipe(gulp.dest(`./${paths.dist}/scripts`))
-      .pipe(server.stream())
-  );
+  
+  generateDynamicLoader();
+
+  return gulp.src(`./${paths.source}/scripts/**/*.js`) // Измените путь, чтобы выбрать все JS файлы
+    .pipe(webpackStream(webpackConfig, webpack))
+    .pipe(gulp.dest(`./${paths.dist}/scripts`))
+    .pipe(server.stream());
 }
 
 export default initScripts;

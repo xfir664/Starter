@@ -1,5 +1,59 @@
-body {
-    background: #000;
-    color: red;
-    align-items: center;
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 0 10px;
+    width: 100%;
+    max-width: 1170px;
+}
+
+.hidden {
+    display: none;
+}
+
+.primary-title {
+    // margin: 0;
+}
+
+.base-text {
+    // margin: 0;
+}
+
+.link {
+    // color: inherit;
+    // text-decoration: none;
+}
+
+.button {
+    // cursor: pointer;
+    // border: none;
+    // background-color: transparent;
+}
+
+.list-style-none {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
 }

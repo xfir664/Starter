@@ -5,6 +5,6 @@ const { gulp } = imports;
 const { dist, source } = paths
 
 export function copyFonts () {
-    return gulp.src(`./${source}/fonts/**/*.{woff,woff2}`)
+    return gulp.src([`./${source}/fonts/**/*.{woff,woff2}`, `!./${source}/**/README.md`])
     .pipe(gulp.dest(`./${dist}/fonts`))
 }

@@ -1,0 +1,160 @@
+.user-navbar {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    padding: 18px;
+    padding-right: 20px;
+    width: 100%;
+    background-color: $BASE_WHITE;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: .3s ease all;
+
+    &--active {
+        opacity: 1;
+        transform: translateX(0px);
+        display: block;
+    }
+
+    &--no-js {
+        display: block;
+        position: static;
+        background-color: rgba($PURPLE_9564AA, 0.1);
+        border: 2px solid rgba($PURPLE_9564AA, 0.2);
+        border-radius: 10px;
+    }
+
+    &__accaunt {
+        display: grid;
+        grid-template-columns: 49px 1fr;
+        column-gap: 15px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid rgba($PURPLE_9564AA, 0.2);
+    }
+
+    &__profile-avatar-link {
+        grid-row: 1 / 3;
+        transition: .3s ease all;
+
+        &:hover {
+            opacity: 0.7;
+        }
+
+        &:active {
+            opacity: 0.3;
+        }
+    }
+
+    &__profile-img {
+        display: block;
+        border-radius: 50%;
+        box-shadow: 0px 0px 0px 2px $BASE_WHITE;
+    }
+
+    &__profile-name-link {
+        font-weight: 700;
+        transition: .3s ease all;
+
+        &:hover {
+            opacity: 0.7;
+        }
+
+        &:active {
+            opacity: 0.3;
+        }
+    }
+
+    &__get-premium {
+        align-self: flex-end;
+        justify-self: flex-start;
+        padding: 5px 10px;
+        font-size: 10px;
+        color: $BASE_WHITE;
+        background-color: $PURPLE_684677;
+        border-radius: 5px;
+        transition: .3s ease all;
+
+        &:hover {
+            opacity: 0.7;
+        }
+
+        &:active {
+            opacity: 0.3;
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        padding-top: 21px;
+        padding-left: 12px;
+    }
+
+    &__item-link {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        transition: .3s ease all;
+
+        &:hover {
+            opacity: 0.7;
+        }
+
+        &:active {
+            opacity: 0.3;
+        }
+
+        &::before {
+            content: '';
+            display: block;
+            width: 22px;
+            height: 22px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        &--profile::before {
+            background-image: url('../images/icons/stack.svg#acc');
+        }
+
+        &--photos::before {
+            background-image: url('../../images/camera.svg');
+        }
+
+        &--messages::before {
+            background-image: url('../../images/message.svg');
+        }
+
+        &--favorites::before {
+            background-image: url('../../images/heart.svg');
+        }
+
+        &--guests::before {
+            background-image: url('../../images/eye.svg');
+        }
+
+        &--settings::before {
+            background-image: url('../../images/settings.svg');
+        }
+
+        &--log-out::before {
+            background-image: url('../../images/sign-out.svg');
+        }
+    }
+
+    @media screen and (min-width: $desktop) {
+        opacity: 1;
+        position: static;
+        display: block;
+        grid-column: 1 / 4;
+        grid-row: 1 / -1;
+        background-color: rgba($PURPLE_9564AA, 0.1);
+        border: 2px solid rgba($PURPLE_9564AA, 0.2);
+        border-radius: 10px;
+        transform: none;
+        max-width: 270px;
+    }
+}

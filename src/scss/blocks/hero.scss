@@ -1,0 +1,593 @@
+.hero {
+    padding-top: 15px;
+
+    &__title {
+        font-size: 20px;
+        font-weight: 700;
+        margin: 0;
+        padding-bottom: 10px;
+        margin-bottom: 23px;
+        border-bottom: 2px solid $PURPLE_9564AA;
+    }
+
+    .price {
+        display: flex;
+
+        &__item {
+            position: relative;
+            min-height: 59px;
+            border-radius: 10px;
+            padding-left: 20px;
+        }
+
+        &__item-swiper-block {
+            border: 2px solid $PURPLE_9564AA;
+            background-color: $PURPLE_9564AA;
+            border-radius: 10px;
+            min-height: 59px;
+            justify-content: flex-end;
+            align-items: center;
+            display: flex;
+            flex-grow: 1;
+            border: 2px solid $PURPLE_9564AA;
+        }
+
+
+        &__item-cost {
+            width: 156px;
+            display: flex;
+            gap: 5px;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            font-size: 24px;
+            font-weight: 700;
+            color: $BASE_WHITE;
+        }
+
+        &__cost-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+            font-size: 8px;
+            font-weight: 700;
+            width: 17px;
+            height: 17px;
+            background-color: $YELLOW_FFCF2D;
+            border-radius: 50%;
+            color: $BASE_BLACK;
+        }
+
+        &__item-text {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 123px;
+            height: 23px;
+            border-radius: 5px;
+            background-color: $YELLOW_FFCF2D;
+            font-size: 14px;
+            font-weight: 700;
+            margin: 0;
+            padding: 0;
+            top: 18px;
+            left: 0;
+        }
+
+        &__item-button {
+            display: none;
+        }
+    }
+
+    .timer {
+        display: none;
+    }
+
+    .policy-form {
+        overflow: hidden;
+
+        &__swiper {
+            margin-bottom: 49px;
+            position: relative;
+
+            @media screen and (min-width: $desktop) {
+                overflow: visible;
+            }
+        }
+
+        &__button-mobile {
+            display: flex;
+            width: 100%;
+            height: 55px;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 10px;
+            background-color: $YELLOW_FFCF2D;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        &__check {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        &__link {
+            display: inline-block;
+            color: $PURPLE_9564AA;
+        }
+
+        &__text {
+            margin: 0;
+            line-height: 16px;
+            font-size: 10px;
+        }
+
+        &__input {
+            position: absolute;
+            z-index: -1;
+            opacity: 0;
+        }
+
+        &__label {
+            display: inline-flex;
+            align-items: center;
+            user-select: none;
+        }
+
+        &__label>span {
+            display: inline-flex;
+            align-items: center;
+            user-select: none;
+        }
+
+        &__label>span::before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 1px solid $PURPLE_9564AA;
+            border-radius: 5px;
+            background-color: $BASE_WHITE;
+            cursor: pointer;
+        }
+
+        &__input:not(:disabled):not(:checked)+span:hover::before {
+            opacity: 0.8;
+        }
+
+        &__input:not(:disabled):active+span::before {
+            background-image: url('../../images/checkbox-active.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: $PURPLE_9564AA;
+        }
+
+        &__input:focus+span::before {
+            background-image: url('../../images/checkbox-active.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: $PURPLE_9564AA;
+        }
+
+        &__input:focus:hover+span::before {
+            opacity: 0.8;
+            background-image: url('../../images/checkbox-active.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        &__input:focus:not(:checked)+span::before {
+            background-image: none;
+            background-color: $BASE_WHITE;
+        }
+
+        &__input:checked+span::before {
+            background-image: url('../../images/checkbox-active.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: $PURPLE_9564AA;
+        }
+
+        &__input:checked:hover+span::before {
+            opacity: 0.8;
+        }
+
+        &__input:disabled+span::before,
+        &__input:disabled+span {
+            opacity: 20%;
+        }
+
+        &__pagination-list {
+            bottom: -20px;
+        }
+    }
+
+    .swiper-pagination-bullet {
+        width: 7px;
+        height: 7px;
+        background-color: $YELLOW_FFCF2D;
+        margin: 8px;
+        opacity: 1;
+    }
+}
+
+
+
+@media screen and (min-width: $desktop) {
+    .hero {
+        padding: 0;
+        padding-bottom: 33px;
+
+        &__title {
+            margin: 0;
+            margin-bottom: 30px;
+            text-shadow: 3px 5px 1px rgba(0, 0, 0, 0.4);
+            font-size: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid $PURPLE_9564AA;
+        }
+
+        .timer {
+            display: flex;
+            min-height: 82px;
+            background-color: #C15CA1;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: 11px;
+            padding-right: 13px;
+            border-radius: 10px;
+
+
+            &__title {
+                color: $YELLOW_FFCF2D;
+                margin: 0;
+                margin-right: 31px;
+                font-size: 40px;
+                font-weight: 700;
+                letter-spacing: 1.6px;
+                text-shadow:
+                    -1px -1px 0 $BASE_WHITE,
+                    1px -1px 0 $BASE_WHITE,
+                    -1px 1px 0 $BASE_WHITE,
+                    1px 1px 0 $BASE_WHITE;
+            }
+
+            &__description {
+                color: $BASE_WHITE;
+                margin: 0;
+                margin-right: 38px;
+                font-weight: 700;
+                letter-spacing: 0;
+            }
+
+            &__visual {
+                display: flex;
+                min-height: 56px;
+                gap: 10px;
+                align-items: center;
+                justify-content: center;
+                color: $BASE_BLACK;
+                background-color: $BASE_WHITE;
+                margin: 0;
+                padding-left: 20px;
+                padding-right: 20px;
+                border-radius: 5px;
+            }
+
+            &__span {
+                font-size: 40px;
+            }
+        }
+
+        .price {
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            column-gap: 30px;
+            row-gap: 16px;
+            margin-bottom: 12px;
+            overflow-x: visible;
+
+            &__item {
+                padding: 0;
+                margin: 0;
+                position: static;
+                display: flex;
+                gap: 11px;
+                justify-content: center;
+                align-items: flex-start;
+                width: 150px;
+                height: auto;
+                flex-grow: 1;
+                transition: 0.3s ease-in-out;
+            }
+
+            &__item-swiper-block {
+                padding: 0;
+                margin: 0;
+                display: flex;
+                position: relative;
+                gap: 11px;
+                justify-content: center;
+                align-items: center;
+                padding-top: 15px;
+                padding-bottom: 17px;
+                padding-right: 15px;
+                padding-left: 15px;
+                min-width: 150px;
+                height: auto;
+                border: none;
+                border-radius: 10px;
+                flex-grow: 1;
+                transition: 0.3s ease-in-out;
+                background-color: rgba($PURPLE_9564AA, 0.1);
+                border: 2px solid $PURPLE_9564AA;
+                flex-wrap: wrap;
+            }
+
+            &__item-text {
+                display: none;
+            }
+
+            &__item:last-child:nth-child(5n + 6) {
+                row-gap: 41px;
+                flex-grow: 1;
+                padding: 0;
+
+                .price__item-button {
+                    max-width: 185px;
+                    flex-grow: 1;
+                }
+
+                .price__item-swiper-block {
+                    background-color: rgba($RED_AA6464, 0.2);
+                    border: 2px solid $RED_AA6464;
+                    padding: 0;
+                    margin: 0;
+                    display: flex;
+                    padding-top: 12px;
+                    padding-bottom: 12px;
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    justify-content: center;
+                    height: auto;
+                    align-items: center;
+                    border-radius: 10px;
+                    flex-grow: 1;
+                    transition: 0.3s ease-in-out;
+                }
+            }
+
+            &__item:last-child:nth-child(5n + 6):hover>.price__item-swiper-block>.price__item-text {
+                display: none;
+            }
+
+            &__item:last-child:nth-child(5n + 6):hover {
+
+                .price__item-swiper-block {
+                    background-color: $RED_AA6464;
+                }
+            }
+
+            &__item-cost {
+                display: flex;
+                gap: 5px;
+                justify-content: center;
+                align-items: center;
+                margin: 0;
+                font-size: 24px;
+                font-weight: 700;
+                width: auto;
+                color: $BASE_BLACK;
+                min-width: 64px;
+            }
+
+            &__cost-icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-transform: uppercase;
+                font-size: 8px;
+                font-weight: 700;
+                width: 17px;
+                height: 17px;
+                background-color: $YELLOW_FFCF2D;
+                border-radius: 50%;
+            }
+
+            &__cost-mobile {
+                display: none;
+                align-items: center;
+                justify-content: center;
+                text-transform: uppercase;
+                font-size: 8px;
+                font-weight: 700;
+                width: 17px;
+                height: 17px;
+                background-color: $YELLOW_FFCF2D;
+                border-radius: 50%;
+            }
+
+            &__item-button {
+                display: flex;
+                min-width: 120px;
+                max-width: 185px;
+                min-height: 52px;
+                flex-grow: 1;
+                align-items: center;
+                justify-content: center;
+                border-radius: 5px;
+                background-color: $BASE_WHITE;
+                color: rgba($BASE_BLACK, 0.2);
+                font-weight: 500;
+                cursor: pointer;
+            }
+
+            &__item-button:hover {
+                background-color: $YELLOW_FFCF2D;
+                color: $BASE_BLACK;
+
+            }
+
+
+            &__item-swiper-block:hover {
+                background-color: $PURPLE_9564AA;
+
+                .price {
+
+                    .price__item-swiper-block {
+                        position: relative;
+                    }
+
+                    &__item-cost {
+                        color: $BASE_WHITE;
+                    }
+
+                    &__cost-icon {
+                        color: $BASE_BLACK;
+                    }
+
+                    &__item-text {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        position: absolute;
+                        width: 123px;
+                        height: 23px;
+                        border-radius: 5px;
+                        background-color: $YELLOW_FFCF2D;
+                        font-size: 14px;
+                        font-weight: 700;
+                        margin: 0;
+                        padding: 0;
+                        top: -14px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
+                }
+            }
+        }
+
+        .policy-form {
+            padding-top: 26px;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+            gap: 10px;
+
+            &__swiper {
+                margin: 0;
+            }
+
+            &__pagination-list {
+                display: none;
+            }
+
+            &__button-mobile {
+                display: none;
+            }
+
+            &__block {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            &__text {
+
+                margin: 0;
+                line-height: 16px;
+                font-size: 13px;
+            }
+
+            &__input {
+                position: absolute;
+                z-index: -1;
+                opacity: 0;
+            }
+
+            &__label {
+                display: inline-flex;
+                align-items: center;
+                user-select: none;
+            }
+
+            &__label>span {
+                display: inline-flex;
+                align-items: center;
+                user-select: none;
+            }
+
+            &__label>span::before {
+                content: '';
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                border: 1px solid $PURPLE_9564AA;
+                border-radius: 5px;
+                background-color: $BASE_WHITE;
+                cursor: pointer;
+            }
+
+            &__input:not(:disabled):not(:checked)+span:hover::before {
+                opacity: 0.8;
+            }
+
+            &__input:not(:disabled):active+span::before {
+                background-image: url('../../images/checkbox-active.svg');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-color: $PURPLE_9564AA;
+            }
+
+            &__input:focus+span::before {
+                background-image: url('../../images/checkbox-active.svg');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-color: $PURPLE_9564AA;
+            }
+
+            &__input:focus:hover+span::before {
+                opacity: 0.8;
+                background-image: url('../../images/checkbox-active.svg');
+                background-repeat: no-repeat;
+                background-position: center;
+
+            }
+
+            &__input:focus:not(:checked)+span::before {
+                background-image: none;
+                background-color: $BASE_WHITE;
+            }
+
+            &__input:checked+span::before {
+                background-image: url('../../images/checkbox-active.svg');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-color: $PURPLE_9564AA;
+            }
+
+            &__input:checked:hover+span::before {
+                opacity: 0.8;
+            }
+
+            &__input:disabled+span::before,
+            &__input:disabled+span {
+                opacity: 20%;
+            }
+
+            &__link {
+                display: inline-block;
+                color: $PURPLE_9564AA;
+            }
+        }
+    }
+
+}
