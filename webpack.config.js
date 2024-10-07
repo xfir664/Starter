@@ -34,6 +34,17 @@ export const webpackConfig = {
                 test: /\.css$/, 
                 use: ['style-loader', 'css-loader'],
             },
+            {
+                test: /\.html$/,
+                use: [
+                    {
+                        loader: 'html-loader',
+                        options: {
+                            minimize: true,
+                        },
+                    },
+                ],
+            },
         ],
     },
     optimization: {
